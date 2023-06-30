@@ -1,7 +1,9 @@
-<div class="login-containerc col-md-12">
+<div class="login-containerc">
   <!-- this div contains whole form-->
-  <div class="col-md-7 form-container">
-    <div style="text-align: center;">
+  <div class="col-md-12">
+    <div
+      style="text-align: center; background-color: white; border: 2px solid white;"
+    >
       <form [formGroup]="loginForm">
         <div class="col-md-12">
           <div
@@ -9,38 +11,58 @@
             style="align-items: center; 
                   display: flex; flex-direction: column; padding-bottom: 4%; margin-top: 5%;"
           >
-            <div class="col-md-5">
-              <h1 style="font-weight: bolder;">LOGIN</h1>
+            <div class="col-md-12">
+              <h4 style="font-weight: bolder;">LOGIN</h4>
             </div>
           </div>
           <div class="col-md-12">
-            <div class="row">
-                <br />
-                <br />
-                <BR />
-              </div>
-            </div>
-
             <div class="col-md-12">
-              <label style="float: left;">Email address: </label>
+              <label style="float: left; font-size: small"
+                >Email address:
+              </label>
               <div
                 class="col-md-12 row form-outline mb-4"
                 style="display: contents; "
               >
                 <input
-                  
+                  [class.is-invalid]="
+                    loginForm.get('email')?.invalid &&
+                    loginForm.get('email')?.touched
+                  "
                   type="email"
                   class="form-control"
                   formControlName="email"
                   required
                   placeholder="Email address"
-                  style="box-sizing: content-box;"
                 />
+              </div>
+              <div class="row">
+                <div
+                  *ngIf="
+                    (loginForm.get('email')?.invalid &&
+                      loginForm.get('email')?.touched) ||
+                    loginForm.get('email')?.dirty
+                  "
+                >
+                  <label
+                    *ngIf="loginForm.get('email')?.hasError('required')"
+                    class="text-danger"
+                    >Email address is required</label
+                  >
+                  <label
+                    *ngIf="loginForm.get('email')?.hasError('email')"
+                    class="text-danger"
+                    >Please provide a valid email address</label
+                  >
+                  <label *ngIf="errorMessage" class="text-danger"
+                    >Incorrect email address or password</label
+                  >
+                </div>
               </div>
             </div>
 
             <div class="col-md-12" style="margin-top: 2%;">
-              <label style="float: left;">Password: </label>
+              <label style="float: left;font-size: small">Password: </label>
               <div
                 class="col-md-12 form-outline mb-4"
                 style="display: contents; "
@@ -52,27 +74,27 @@
                   required
                   class="form-control"
                   placeholder="Password"
-                  style="box-sizing: content-box; "
                 />
               </div>
             </div>
             <div
               class="col-md-12"
-              style="align-items: center;margin-top: 8%;
+              style="align-items: center;margin-top: 2%;
                       display: flex; flex-direction: column;"
             >
-              <div class="col-md-5">
+              <div class="col-md-12">
                 <button
                   type="button"
                   (click)="signIn()"
-                  class="btn btn-primary btn-block mb-4"
+                  class="btn btn-primary"
                   style="background-color: green;"
                 >
-                  <h5>Sign in</h5>
+                  <h6>Sign in</h6>
                 </button>
               </div>
             </div>
           </div>
+        </div>
       </form>
     </div>
   </div>

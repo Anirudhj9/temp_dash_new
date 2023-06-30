@@ -1,5 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, Validators, FormBuilder } from '@angular/forms';
+import {
+  FormGroup,
+  FormControl,
+  Validators,
+  FormBuilder,
+} from '@angular/forms';
 import { Router } from '@angular/router';
 import { UserList } from '../../shared/userList.model';
 
@@ -9,11 +14,14 @@ import { UserList } from '../../shared/userList.model';
   styleUrls: ['./login.component.css'],
 })
 export class AppLoginPage implements OnInit {
-  constructor(
-    private formBuilder: FormBuilder,
-    private router: Router,
-    public loginForm: FormGroup
-  ) {}
+  errorMessage = '';
+  constructor(private formBuilder: FormBuilder, private router: Router) {}
+  loginForm: FormGroup = new FormGroup({
+    // Define your form controls here
+    emailID: new FormControl(''),
+    lastName: new FormControl(''),
+    // ...other form controls
+  });
   ngOnInit(): void {
     this.loginForm = this.formBuilder.group({
       email: ['', [Validators.required, Validators.email]],

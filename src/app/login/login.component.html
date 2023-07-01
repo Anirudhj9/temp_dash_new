@@ -1,11 +1,14 @@
-<div class="login-containerc">
+<div
+  class="login-containerc"
+  style="display: flex; justify-content: center; padding-top: 3%;"
+>
   <!-- this div contains whole form-->
-  <div class="col-md-12">
+  <div class="col-md-4">
     <div
       style="text-align: center; background-color: white; border: 2px solid white;"
     >
       <form [formGroup]="loginForm">
-        <div class="col-md-12">
+        <div class="col-md-12" style="padding-bottom: 10%; padding-top: 1%;">
           <div
             class="col-md-12"
             style="align-items: center; 
@@ -17,8 +20,8 @@
           </div>
           <div class="col-md-12">
             <div class="col-md-12">
-              <label style="float: left; font-size: small"
-                >Email address:
+              <label style="float: left; font-size: small">
+                Email address:
               </label>
               <div
                 class="col-md-12 row form-outline mb-4"
@@ -33,10 +36,9 @@
                   class="form-control"
                   formControlName="email"
                   required
-                  placeholder="Email address"
                 />
               </div>
-              <div class="row">
+              <div class="col-md-12" style="display: flex">
                 <div
                   *ngIf="
                     (loginForm.get('email')?.invalid &&
@@ -47,22 +49,22 @@
                   <label
                     *ngIf="loginForm.get('email')?.hasError('required')"
                     class="text-danger"
-                    >Email address is required</label
+                    ><small> Email address is required</small></label
                   >
                   <label
                     *ngIf="loginForm.get('email')?.hasError('email')"
                     class="text-danger"
-                    >Please provide a valid email address</label
+                    ><small>Please provide a valid email address</small></label
                   >
                   <label *ngIf="errorMessage" class="text-danger"
-                    >Incorrect email address or password</label
+                    ><small>Incorrect email address or password</small></label
                   >
                 </div>
               </div>
             </div>
 
             <div class="col-md-12" style="margin-top: 2%;">
-              <label style="float: left;font-size: small">Password: </label>
+              <label style="float: left;font-size: small"> Password: </label>
               <div
                 class="col-md-12 form-outline mb-4"
                 style="display: contents; "
@@ -73,7 +75,6 @@
                   formControlName="password"
                   required
                   class="form-control"
-                  placeholder="Password"
                 />
               </div>
             </div>
@@ -82,12 +83,12 @@
               style="align-items: center;margin-top: 2%;
                       display: flex; flex-direction: column;"
             >
-              <div class="col-md-12">
+              <div class="col-md-12" style="margin-top: 5%">
                 <button
                   type="button"
                   (click)="signIn()"
-                  class="btn btn-primary"
-                  style="background-color: green;"
+                  class="log"
+                  [disabled]="loginForm.invalid || loginForm.pending"
                 >
                   <h6>Sign in</h6>
                 </button>

@@ -4,3 +4,26 @@
   left: 50%;
   transform: translate(-50%, -50%);
 }
+
+button {
+  cursor: pointer;
+  border: 0;
+  border-radius: 4px;
+  font-weight: 600;
+  margin: 0 10px;
+  width: 200px;
+  padding: 10px 0 0px 0px;
+  box-shadow: 0 0 6px black;
+  transition: 0.4s;
+}
+
+.log {
+  color: black;
+  background-color: #2fa02f;
+}
+
+button:hover {
+  color: black;
+  box-shadow: 0 0 20px hsl(139.41deg 84.4% 30.95%);
+  background-color: rgb(28, 100, 28);
+}

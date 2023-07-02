@@ -1,5 +1,4 @@
 import { Component, Input, Output, ViewEncapsulation } from '@angular/core';
-import { UserList } from '../shared/userList.model';
 
 @Component({
   selector: 'app-root',

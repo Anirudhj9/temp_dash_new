@@ -7,7 +7,7 @@
     <div
       style="text-align: center; background-color: white; border: 2px solid white;"
     >
-      <form [formGroup]="loginForm">
+      <form name="loginForm" id="loginForm" [formGroup]="loginForm">
         <div class="col-md-12" style="padding-bottom: 10%; padding-top: 1%;">
           <div
             class="col-md-12"
@@ -20,7 +20,7 @@
           </div>
           <div class="col-md-12">
             <div class="col-md-12">
-              <label style="float: left; font-size: small">
+              <label style="float: left; font-size: 15px">
                 Email address:
               </label>
               <div
@@ -36,6 +36,7 @@
                   class="form-control"
                   formControlName="email"
                   required
+                  placeholder="email address"
                 />
               </div>
               <div class="col-md-12" style="display: flex">
@@ -64,7 +65,7 @@
             </div>
 
             <div class="col-md-12" style="margin-top: 2%;">
-              <label style="float: left;font-size: small"> Password: </label>
+              <label style="float: left;font-size: 15px"> Password: </label>
               <div
                 class="col-md-12 form-outline mb-4"
                 style="display: contents; "
@@ -75,6 +76,7 @@
                   formControlName="password"
                   required
                   class="form-control"
+                  placeholder="password"
                 />
               </div>
             </div>

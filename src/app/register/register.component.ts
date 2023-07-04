@@ -34,7 +34,7 @@ export class AppRegisterPage implements OnInit {
     dateOfBirth: new FormControl(''),
   });
 
-  signIn(): void {
+  signUp(): void {
     //if (this.registerForm.invalid) {
     //  return;
     //}

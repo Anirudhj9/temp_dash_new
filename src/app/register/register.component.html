@@ -3,21 +3,25 @@
   style="display: flex;
 justify-content: center;
 justify-items: center;
-  font-size:15px;"
+  font-size:15px;
+  padding: 0% 0% 0% 0%;"
 >
   <!-- this div contains whole form-->
   <div
     class="col-md-4 form-container"
     style="
   background-color: white;
-  margin-top: 3%;
-  padding-top: 2%;
-  padding-bottom: 2%;
+  margin-top: 1%;
+  padding: 2% 0% 2% 0%;
 "
   >
-    <div class="col-md-12" style="text-align: justify;">
+    <div
+      class="col-md-12"
+      style="text-align: justify;padding-top: 0%;
+    padding-bottom: 0%;"
+    >
       <form name="registerForm" id="registerForm" [formGroup]="registerForm">
-        <div class="col-md-12">
+        <div class="col-md-12" style="padding-left: 0%; padding-right: 0%">
           <!-- sign up -->
           <div
             class="col-md-12"
@@ -28,22 +32,19 @@ justify-items: center;
           </div>
           <div class="col-md-12" style="display: flex;">
             <!-- first name -->
-            <div class="col-md-5" style="padding-left: 0%; padding-right: 0%;">
+            <div class="col-md-6" style="padding-left: 0%; padding-right: 0%;">
               <label style="float: left;">First name: </label>
               <div
                 class="col-md-12 row form-outline mb-4"
                 style="display: contents; "
               >
                 <input
-                  [class.is-invalid]="
-                    registerForm.get('firstName')?.invalid &&
-                    registerForm.get('firstName')?.touched
-                  "
                   type="firstName"
                   class="form-control"
                   formControlName="firstName"
                   required
                   placeholder="First name"
+                  style="width: 90%;"
                 />
               </div>
               <div
@@ -104,10 +105,6 @@ justify-items: center;
               style="display: contents; "
             >
               <input
-                [class.is-invalid]="
-                  registerForm.get('email')?.invalid &&
-                  registerForm.get('email')?.touched
-                "
                 type="email"
                 class="form-control"
                 formControlName="email"
@@ -229,7 +226,15 @@ justify-items: center;
                   required
                   class="form-control"
                   placeholder="Password"
+                  minlength="8"
+                  maxlength="20"
                 />
+              </div>
+              <div
+                *ngIf="registerForm.get('password')?.errors?.pattern"
+                class="text-danger"
+              >
+                Passwords should be atleast 8 char length
               </div>
             </div>
             <!--confirm Password-->
@@ -277,7 +282,7 @@ justify-items: center;
               type="button"
               (click)="signUp()"
               class="log"
-              [disabled]="true"
+              [disabled]="registerForm.invalid || registerForm.pending"
             >
               <h6>Sign up</h6>
             </button>

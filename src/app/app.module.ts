@@ -34,7 +34,6 @@ export const routerProviders = [provideRouter(routes)];
     FormsModule,
     ReactiveFormsModule,
     RouterModule.forRoot(routes),
-    NgxNavbarModule,
     BrowserAnimationsModule,
   ],
   providers: [AppComponent],

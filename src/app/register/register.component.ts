@@ -56,7 +56,7 @@ export class AppRegisterPage implements OnInit {
   }
 
   ngOnInit(): void {
-    /*this.registerForm = this.formBuilder.group(
+    this.registerForm = this.formBuilder.group(
       {
         firstName: ['', Validators.required],
         lastName: ['', Validators.required],
@@ -97,7 +97,7 @@ export class AppRegisterPage implements OnInit {
         ],
       },
       { validator: this.passwordMatchValidator }
-    );*/
+    );
     this.registerForm = this.formBuilder.group({
       email: ['', [Validators.required, Validators.email]],
       password: ['', Validators.required],
@@ -107,9 +107,6 @@ export class AppRegisterPage implements OnInit {
       dateOfBirth: ['', Validators.required],
       phoneNumber: ['', Validators.required],
     });
-  }
-  dateOfBirthValidator(): any {
-    throw new Error('Method not implemented.');
   }
 
   passwordMatchValidator(formGroup: FormGroup) {
@@ -122,12 +119,12 @@ export class AppRegisterPage implements OnInit {
       formGroup.get('confirmPassword')?.setErrors(null);
     }
   }
-  /*dateOfBirthValidator(): AsyncValidatorFn {
+  dateOfBirthValidator(): AsyncValidatorFn {
     return (control: AbstractControl): Promise<ValidationErrors | null> => {
       return new Promise((resolve) => {
         const selectedDate = new Date(control.value);
         const currentDate = new Date();
-  
+
         if (selectedDate > currentDate) {
           resolve({ invalidDateOfBirth: true });
         } else {
@@ -136,12 +133,15 @@ export class AppRegisterPage implements OnInit {
       });
     };
   }
-  isInvalidEmail(): boolean {
+  /*isInvalidEmail(): boolean {
     const emailControl = this.registerForm.get('email');
     return emailControl.invalid && (emailControl.dirty || emailControl.touched);
   }
   isInvalidPhoneNumber(): boolean {
     const phoneNumberControl = this.registerForm.get('phoneNumber');
-    return phoneNumberControl.invalid && (phoneNumberControl.dirty || phoneNumberControl.touched);
+    return (
+      phoneNumberControl.invalid &&
+      (phoneNumberControl.dirty || phoneNumberControl.touched)
+    );
   }*/
 }
